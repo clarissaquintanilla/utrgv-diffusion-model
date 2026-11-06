@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 D = 100 # diffusivity
 Lx = 300 # model domain 
 
