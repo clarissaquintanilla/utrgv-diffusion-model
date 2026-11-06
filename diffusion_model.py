@@ -1,6 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+def plot_profile(x, z, title, color="r", output=None):
+    plt.figure()
+    plt.plot(x, z, "r")
+    plt.xlabel("x")
+    plt.ylabel("z")
+    if title is not None: 
+        plt.title(title)
+    if output is not None: 
+        plt. savefig(output)
+        
 
 D = 100 # diffusivity
 Lx = 300 # model domain 
@@ -15,11 +25,7 @@ z_right = 0
 z[x <= Lx / 2] = z_left # step 
 z[x > Lx / 2] = z_right
 
-plt.figure()
-plt.plot(x, z, "r")
-plt.xlabel("x")
-plt.ylabel("z")
-plt.title("Initial profile")
+plot_profile(x, z, title="Initial profile", output="Initial.png")
 
 nt = 5000 # number of time steps 
 dt = 0.5 * dx **2 / D # time step 
@@ -29,12 +35,7 @@ dt
 for t in range(0, nt):
 	z[1:-1] += D * dt / dx ** 2 * (z[:-2] - 2*z[1:-1] + z[2:])
 
-plt.figure()
-plt.plot(x, z, "b")
-plt.xlabel("x")
-plt.ylabel("z")
-plt.title("Final profile")
-
+plot_profile(x, z, title="Final profile", color="b", output="Final.png")
 
 
 
