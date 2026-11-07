@@ -14,7 +14,7 @@ def plot_profile(x, z, title, color="r", output=None):
 def calculate_stable_time_step(dx, diffusivity): 
     return 0.5 * dx**2 / diffusivity
 
-if _name_ == "_main_": 
+if __name__ == "__main__": 
 
     D = 100 # diffusivity
     Lx = 300 # model domain 
